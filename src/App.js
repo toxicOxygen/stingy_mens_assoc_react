@@ -11,6 +11,7 @@ class App extends React.Component{
       lastName: '',
       position:'',
       country:'',
+      branch:'',
       photoUrl: ''
     }
 
@@ -18,15 +19,27 @@ class App extends React.Component{
     this.handleChange = this.handleChange.bind(this)
   }
 
-  submit(e)
+  submit(event)
   {
-    e.preventDefault();
+    event.preventDefault();
+    console.log("data collect", this.state)
     //to do save image
   }
 
-  handleChange(e)
+  handleChange(event)
   {
-
+    const fieldName = event.target.name
+    if (fieldName === "photoUrl")
+    {
+      this.setState({
+        [event.target.name]: URL.createObjectURL(event.target.files[0])
+      })
+      console.log(this.state.photoUrl)
+    }
+    else
+      this.setState({
+        [event.target.name]: event.target.value
+      })
   }
 
 
@@ -38,7 +51,7 @@ class App extends React.Component{
         <div className="row d-flex justify-content-center mb-4">
           <div className="col-md-8">
            
-            <RegistrationForm onSubmit={this.submit} handleChange={this.handleChange}/>
+            <RegistrationForm onSubmit={this.submit} handleChange={this.handleChange} data={this.state}/>
             
           </div>
         </div>
@@ -46,7 +59,7 @@ class App extends React.Component{
         <div className="row d-flex justify-content-center">
           <div className="col-md-4">
            
-            <StingyCard country="INC."/>
+            <StingyCard data={this.state}/>
             
           </div>
         </div>

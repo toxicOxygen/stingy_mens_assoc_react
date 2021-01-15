@@ -15,6 +15,9 @@ const cardStyle = {
     borderRadius: '3mm',
     padding: '10px',
     fontSize: '11px',
+    height: '200px',
+    maxWidth: '500px',
+    minWidth: '300px',
     boxShadow: '3px 3px 6px rgba(0,0,0,0.7)'
 }
 
@@ -40,13 +43,13 @@ function StingyCard(props)
                         <img className="emv-chip" src="https://i.imgur.com/EiqmohE.png" alt="chipset"/>
                         <div className="ml-2">
                             <h5 className="text-center">IDENTITY CARD</h5>
-                            <UserDetailLine label="Name" value="Teacher Kwadwo"/>
-                            <UserDetailLine  label="Position" value="Senior Interviewer"/>
-                            <UserDetailLine  label="Branch" value="GHANA - ACCRA"/>
+                            <UserDetailLine label="Name" value={`${props.data.firstName} ${props.data.lastName}`}/>
+                            <UserDetailLine  label="Position" value={`${props.data.position}`}/>
+                            <UserDetailLine  label="Branch" value={`${props.data.country} - ${props.data.branch}`}/>
                             <UserDetailLine  label="ID" value="GHSMA00498"/>
                         </div>
                     </div>
-                    <img className="profile-pic" style={{flexGrow: '2'}} src="https://i.imgur.com/yNlOPgu.jpg" alt="user"/>
+                    <img className="profile-pic" style={{flexGrow: '2'}} src={props.data.photoUrl} alt="user"/>
                 </div>
                 {/* end */}
 
