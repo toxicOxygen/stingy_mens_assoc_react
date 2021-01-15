@@ -1,4 +1,6 @@
 import React from 'react';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 import RegistrationForm from "./components/RegistrationForm";
 import StingyCard from "./components/StingyCard";
 
@@ -12,7 +14,7 @@ class App extends React.Component{
       position:'',
       country:'',
       branch:'',
-      photoUrl: ''
+      photoUrl: 'https://i.imgur.com/SrstDOf.png'
     }
 
     this.submit = this.submit.bind(this)
@@ -22,8 +24,8 @@ class App extends React.Component{
   submit(event)
   {
     event.preventDefault();
-    console.log("data collect", this.state)
-    //to do save image
+    let stingyCard = document.getElementById('stingy-card');
+    domtoimage.toBlob(stingyCard).then((blob)=>window.saveAs(blob,'card.png'))
   }
 
   handleChange(event)

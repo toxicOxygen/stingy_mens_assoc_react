@@ -25,7 +25,7 @@ function StingyCard(props)
 {
      return (
          <>
-            <div style={cardStyle}>
+            <div style={cardStyle} id="stingy-card">
                 {/* for logo, title and motto */}
                 <div className="flex-row">
                     <img className="card-logo" src="https://i.imgur.com/9fi6Uom.png" alt="logo of organization"/>
